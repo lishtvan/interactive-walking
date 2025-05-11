@@ -25,3 +25,18 @@ npm i
 
 npm run dev
 ```
+
+## Logs
+
+```
+userC joined explore
+userB joined explore
+userA joined explore
+
+userC invited userB to walk
+User accepted walk invite, and 2 users joined walk: userC, userB
+
+User exited walk
+userC joined explore
+userB joined explore
+```
