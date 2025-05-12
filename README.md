@@ -2,6 +2,8 @@
 
 ## Setup
 
+Node js version 22.x is required.
+
 ```bash
 git clone git@github.com:lishtvan/interactive-walking.git
 ```
