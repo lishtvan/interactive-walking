@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import type { User } from "../types/user";
 import OnlineUsers from "../components/OnlineUsers";
@@ -16,13 +16,12 @@ const Walk: React.FC<WalkProps> = ({ userId }) => {
   const { walkId } = useParams();
   const navigate = useNavigate();
 
-  const updateUsers = useCallback((newUsers: User[]) => setUsers(newUsers), []);
   const eventData = useMemo(
     () => ({ userId, walkId, event: "walk:update-location" }),
     [userId, walkId]
   );
 
-  useFakeWalk(eventData, updateUsers);
+  useFakeWalk(eventData, setUsers);
 
   useEffect(() => {
     socket.on("walk:exit", () => {

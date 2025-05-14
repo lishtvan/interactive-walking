@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router";
 import socket from "../ws/socket";
 import type { User } from "../types/user";
@@ -16,13 +16,12 @@ type ExploreProps = {
 
 const Explore: React.FC<ExploreProps> = ({ userId }) => {
   const [users, setUsers] = useState<User[]>([]);
-  const updateUsers = useCallback((newUsers: User[]) => setUsers(newUsers), []);
   const eventData = useMemo(
     () => ({ userId, event: "explore:update-location" }),
     [userId]
   );
-  useFakeWalk(eventData, updateUsers);
-  const { isLoading } = useJoinExplore(userId, updateUsers);
+  useFakeWalk(eventData, setUsers);
+  const { isLoading } = useJoinExplore(userId, setUsers);
   const navigate = useNavigate();
 
   useEffect(() => {
